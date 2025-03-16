@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: <https://github.com/JeetDas5/love-o-meter-quest.git>
+**URL**: <https://github.com/JeetDas5/love-o-meter-kodesphere.git>
 
 ## How can I edit this code?
 
@@ -18,10 +18,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <https://github.com/JeetDas5/love-o-meter-quest.git>
+git clone <https://github.com/JeetDas5/love-o-meter-kodesphere.git>
 
 # Step 2: Navigate to the project directory.
-cd <https://github.com/JeetDas5/love-o-meter-quest.git>
+cd <love-o-meter-kodesphere>
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -54,11 +54,7 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deployed URL
 
-You can deploy your project using services like Netlify, Vercel, or GitHub Pages.
-
-## I want to use a custom domain - is that possible?
-
-If you want to deploy your project under your own domain, we recommend using Netlify or Vercel. Visit their documentation for more details on setting up a custom domain.
+<https://love-o-meter.vercel.app>
 
