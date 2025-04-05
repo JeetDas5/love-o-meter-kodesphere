@@ -175,7 +175,7 @@ const Index = () => {
       </div>
 
       <footer className="mt-auto pt-8 text-center text-black text-sm font-medium">
-        <p>Made with love ❤️ • Results are for entertainment purposes only</p>
+        <p>Made with love ❤️ by Konnexions KIIT • Results are for entertainment purposes only</p>
       </footer>
     </div>
   );
