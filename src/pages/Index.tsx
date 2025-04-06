@@ -46,8 +46,14 @@ const Index = () => {
         result += 20;
       }
 
+      //If result is less than 50, display any random number between 60 and 65
       if (result < 60) {
-        result = 62;
+        result = Math.floor(Math.random() * 6) + 60;
+      }
+
+      //If result is between 50 and 60, display any random number between 65 and 70
+      if (result >= 50 && result < 60) {
+        result = Math.floor(Math.random() * 6) + 65;
       }
 
       // Limit to 0-100 range
@@ -175,7 +181,10 @@ const Index = () => {
       </div>
 
       <footer className="mt-auto pt-8 text-center text-black text-sm font-medium">
-        <p>Made with love ❤️ by Konnexions KIIT • Results are for entertainment purposes only</p>
+        <p>
+          Made with love ❤️ by Konnexions KIIT • Results are for entertainment
+          purposes only
+        </p>
       </footer>
     </div>
   );
