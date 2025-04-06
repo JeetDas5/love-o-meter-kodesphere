@@ -130,7 +130,7 @@ const Index = () => {
               </label>
               <input
                 id="name2"
-                type="text"
+                type="password"
                 value={name2}
                 onChange={(e) => setName2(e.target.value)}
                 onFocus={() => setInputFocus("name2")}
