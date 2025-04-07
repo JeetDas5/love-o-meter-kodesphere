@@ -13,15 +13,12 @@ export const getLove = async (req: Request, res: Response) => {
   }
 };
 
-export const postLove = async (
-  req: Request,
-  res: Response
-): Promise<Response | void> => {
+export const postLove = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, crush, result } = req.body;
 
     if (!name || !crush || result === undefined) {
-      return res.status(400).json({ message: "All fields are required" });
+      res.status(400).json({ message: "All fields are required" });
     }
 
     const loveResult = await prisma.loveResult.create({
@@ -32,9 +29,9 @@ export const postLove = async (
       },
     });
 
-    return res.status(201).json(loveResult);
+    res.status(201).json(loveResult);
   } catch (error) {
     console.error("Error in creating result", error);
-    return res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
