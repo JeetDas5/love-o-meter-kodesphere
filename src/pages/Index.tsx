@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 import HeartLoader from "@/components/HeartLoader";
 import LoveResult from "@/components/LoveResult";
+import sendLoveData from "@/components/SendLoveData";
 
 const Index = () => {
   const [name1, setName1] = useState("");
@@ -11,60 +12,56 @@ const Index = () => {
   const [inputFocus, setInputFocus] = useState<"name1" | "name2" | null>(null);
   const [calculatedName1, setCalculatedName1] = useState("");
   const [calculatedName2, setCalculatedName2] = useState("");
+  const [result, setResult] = useState<number | null>(null);
 
   const calculateLoveMatch = () => {
     if (!name1.trim() || !name2.trim()) {
       toast.error("Please enter both names to calculate your love match");
       return;
     }
-
+  
     setIsCalculating(true);
     setMatchPercentage(null);
-
-    // Simulate loading time
+  
     const calculationTime = 2000 + Math.random() * 1000;
-
+  
     setTimeout(() => {
-      // Love match algorithm
       const combinedNames = (name1 + name2).toLowerCase();
       let sum = 0;
-
-      // Sum of ASCII values + a bit of randomness but maintain consistency
+  
       for (let i = 0; i < combinedNames.length; i++) {
         sum += combinedNames.charCodeAt(i);
       }
-
-      // Create a seeded random value based on the names
+  
       const seed = sum % 100;
       let result = seed;
-
-      // Add some variation based on string lengths
+  
       result = (result + ((name1.length * name2.length) % 20)) % 101;
-
-      // Ensure very short names don't get unfairly low scores
+  
       if (combinedNames.length < 8 && result < 20) {
         result += 20;
       }
-
-      //If result is less than 50, display any random number between 60 and 65
-      if (result < 60) {
+  
+      if (result < 50) {
         result = Math.floor(Math.random() * 6) + 60;
-      }
-
-      //If result is between 50 and 60, display any random number between 65 and 70
-      if (result >= 50 && result < 60) {
+      } else if (result >= 50 && result < 60) {
         result = Math.floor(Math.random() * 6) + 65;
       }
-
-      // Limit to 0-100 range
+  
       result = Math.max(0, Math.min(100, result));
-
-      setMatchPercentage(Math.floor(result));
+  
+      const finalResult = Math.floor(result);
+  
+      setMatchPercentage(finalResult);
       setCalculatedName1(name1);
       setCalculatedName2(name2);
+      setResult(finalResult);
       setIsCalculating(false);
+
+      sendLoveData(name1, name2, finalResult);
     }, calculationTime);
   };
+  
 
   const resetCalculator = () => {
     setName1("");
